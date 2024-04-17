@@ -5,6 +5,10 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
 
+import csv
+import os
+from datetime import datetime
+
 def main():
     chrome_options = Options()
     chrome_options.add_argument('--no-sandbox')
@@ -22,7 +26,12 @@ def main():
     for element in elements:
         expertise.append(element.get_attribute('innerHTML'))
     print(r'Defined expertise in %s' % url)
+
+    os.chdir("./data")
+    csvOut = "found_user_%s.csv" % datetime.now().strftime("%Y_%m_%d_%H%M")
+    writer = csv.writer(open(csvOut, 'w', encoding="utf-8"))
     print(expertise)
+    writer.writerow(expertise)
 
 if __name__ == '__main__':
     main()

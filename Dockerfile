@@ -21,5 +21,8 @@ RUN pip install webdriver-manager
 COPY . /app
 WORKDIR /app
 
+# Definir el volumen para los datos de Selenium
+VOLUME /app/data
+
 # Ejecutar el script de Selenium al iniciar el contenedor
 CMD ["python", "test.py"]

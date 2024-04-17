@@ -1,0 +1,7 @@
+version: '2'
+services:
+ facebook:
+    container_name: facebook
+    image: test_docker
+    volumes:
+    - ./data:/app/data
